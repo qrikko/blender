@@ -1954,6 +1954,13 @@ typedef struct SpaceSpreadsheet {
   SpaceSpreadsheet_Runtime *runtime;
 } SpaceSpreadsheet;
 
+typedef struct SpaceAssetShelf {
+  SpaceLink *next, *prev;
+  ListBase regionbase;
+  int spacetype;
+  char _pad[4];
+} SpaceAssetShelf;
+
 typedef enum eSpaceSpreadsheet_Flag {
   SPREADSHEET_FLAG_PINNED = (1 << 0),
   SPREADSHEET_FLAG_CONTEXT_PATH_COLLAPSED = (1 << 1),
@@ -2068,7 +2075,10 @@ typedef enum eSpace_Type {
   SPACE_STATUSBAR = 22,
   SPACE_SPREADSHEET = 23
 
-#define SPACE_TYPE_LAST SPACE_SPREADSHEET
+  //qrikko
+  , SPACE_ASSET_SHELF = 24
+  
+  #define SPACE_TYPE_LAST SPACE_ASSET_SHELF
 } eSpace_Type;
 
 /* use for function args */

@@ -606,6 +606,7 @@ extern StructRNA RNA_SpacePreferences;
 extern StructRNA RNA_SpaceProperties;
 extern StructRNA RNA_SpaceSequenceEditor;
 extern StructRNA RNA_SpaceSpreadsheet;
+extern StructRNA RNA_SpaceAssetShelfEditor;
 extern StructRNA RNA_SpaceTextEditor;
 extern StructRNA RNA_SpaceUVEditor;
 extern StructRNA RNA_SpaceView3D;

@@ -156,6 +156,11 @@ const EnumPropertyItem rna_enum_space_type_items[] = {
      ICON_SPREADSHEET,
      "Spreadsheet",
      "Explore geometry data in a table"},
+    {SPACE_ASSET_SHELF,
+      "ASSETSHELF",
+      ICON_ASSET_MANAGER, /* qrikko: not sure what this is, so I put something that sounded about right */
+      "Asset Shelf",
+      "Pick and choose assets for use in texturing and sculpting"},
     {SPACE_USERPREF,
      "PREFERENCES",
      ICON_PREFERENCES,
@@ -591,6 +596,8 @@ static StructRNA *rna_Space_refine(struct PointerRNA *ptr)
       return &RNA_SpaceSpreadsheet;
 
       /* Currently no type info. */
+    case SPACE_ASSET_SHELF:
+      return &RNA_SpaceAssetShelfEditor;
     case SPACE_SCRIPT:
     case SPACE_EMPTY:
     case SPACE_TOPBAR:
@@ -7583,6 +7590,15 @@ static void rna_def_space_spreadsheet_context(BlenderRNA *brna)
                                             (1 << RGN_TYPE_CHANNELS) | (1 << RGN_TYPE_FOOTER));
 }
 
+static void rna_def_space_asset_shelf(BlenderRNA *brna) {
+  StructRNA *srna;
+  //PropertyRNA *prop;
+
+  srna = RNA_def_struct(brna, "SpaceAssetShelfEditor", "Space");
+  RNA_def_struct_sdna(srna, "SpaceAssetShelf");
+  RNA_def_struct_ui_text(srna, "Space Asset Shelf", "asset shelf editor space data");
+}
+
 static void rna_def_space_spreadsheet_context_object(BlenderRNA *brna)
 {
   StructRNA *srna;
@@ -7797,6 +7813,7 @@ void RNA_def_space(BlenderRNA *brna)
   rna_def_space_node(brna);
   rna_def_space_clip(brna);
   rna_def_space_spreadsheet(brna);
+  rna_def_space_asset_shelf(brna);
 }
 
 #endif
